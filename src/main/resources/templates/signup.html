@@ -1,0 +1,75 @@
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Avansas Sign Up</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <script
+            src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: #3e3e3e;
+            color: white;
+        }
+    </style>
+    <script th:src="@{/js/signup.js}"></script>
+    <script type="text/javascript">
+        var contextPath = "[[@{/}]]";
+    </script>
+</head>
+<body>
+<div class="container">
+    <form class="form-signin" method="post" action="/login">
+        <h2 class="form-signin-heading">Please signup to Avansas</h2>
+        <p>
+            <label for="username" class="sr-only">Username</label>
+            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required=""
+                   autofocus="">
+        </p>
+        <p>
+            <label for="newPassword" class="sr-only">Password</label>
+            <input type="text" id="newPassword" name="newPassword" class="form-control" placeholder="Password"
+                   required="">
+        </p>
+        <p>
+            <label for="name" class="sr-only">Password</label>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Name"
+                   required="">
+        </p>
+        <p>
+            <label for="lastname" class="sr-only">Password</label>
+            <input type="text" id="lastname" name="lastname" class="form-control" placeholder="LastName"
+                   required="">
+        </p>
+        <p>
+            <label for="email" class="sr-only">Password</label>
+            <input type="email" id="email" name="email" class="form-control" placeholder="E-Mail"
+                   required="">
+        </p>
+        <p>
+            <label for="phoneNumber" class="sr-only">Password</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" class="form-control" placeholder="Phone Number: 555-444-33-22"
+                   required="" pattern="[0-9]{10}">
+        </p>
+        <p>
+            <label for="birthDay" class="sr-only">Password</label>
+            <input type="date" id="birthDay" name="birthDay" class="form-control" value="2018-07-22"
+                   min="1900-01-01" max="2030-12-31"
+                   required="">
+        </p>
+        <button class="btn btn-lg btn-primary btn-block" id="saveUser" type="button">Sign Up</button>
+        <button class="btn btn-lg btn-primary btn-block" id="login" type="button" onclick="window.location.href = '/login'">Sign In</button>
+        <button class="btn btn-lg btn-primary btn-block" id="userList" type="button" onclick="window.location.href = '/users'">User List</button>
+    </form>
+</div>
+
+</body>
+</html>
