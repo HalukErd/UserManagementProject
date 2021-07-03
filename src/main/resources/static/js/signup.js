@@ -5,7 +5,7 @@ $(document).ready(function () {
     var lastName = $("#lastname");
     var email = $("#email");
     var phoneNumber = $("#phoneNumber");
-    var birthDay = $("#birthDay");
+    const birthDay = $("#birthDay");
 
     var saveUserButton = $("#saveUser");
 
