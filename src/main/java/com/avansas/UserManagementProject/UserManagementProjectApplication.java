@@ -4,15 +4,18 @@ import com.avansas.UserManagementProject.dao.repo.UserRepository;
 import com.avansas.UserManagementProject.model.entity.UserEntity;
 import com.avansas.UserManagementProject.model.entity.UserInformationEntity;
 import com.avansas.UserManagementProject.model.enums.UserRole;
+import com.avansas.UserManagementProject.security.jwt.JwtConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 @SpringBootApplication
 @EnableJpaRepositories(basePackages = "com.avansas.UserManagementProject.dao.repo")
+@EnableConfigurationProperties(JwtConfig.class)
 public class UserManagementProjectApplication {
 
 	public static void main(String[] args) {

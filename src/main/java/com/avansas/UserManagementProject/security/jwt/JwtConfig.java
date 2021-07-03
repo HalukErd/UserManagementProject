@@ -2,6 +2,7 @@ package com.avansas.UserManagementProject.security.jwt;
 
 import com.google.common.net.HttpHeaders;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 
 @ConfigurationProperties(prefix = "application.jwt")
 public class JwtConfig {
