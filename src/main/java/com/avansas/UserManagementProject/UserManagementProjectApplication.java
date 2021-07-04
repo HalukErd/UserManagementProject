@@ -30,32 +30,32 @@ public class UserManagementProjectApplication {
 
 		return args -> {
 
-			UserEntity admin = new UserEntity(
-					"admin",
-					passwordEncoder.encode("password"),
-					UserRole.ADMIN,
-					new UserInformationEntity(
-							"admin", "admin", "admin@gmail.com", "5454545454", "1999-12-31"
-					));
-			userRepository.save(admin);
-
-			UserEntity haluk = new UserEntity(
-					"halukerd",
-					passwordEncoder.encode("123qwe"),
-					UserRole.REGULAR_USER,
-					new UserInformationEntity(
-							"haluk", "erd", "erd.haluk@gmail.com", "5454545454", "1999-12-31"
-					));
-			userRepository.save(haluk);
-
-			UserEntity melike = new UserEntity(
-					"melike",
-					passwordEncoder.encode("a"),
-					UserRole.REGULAR_USER,
-					new UserInformationEntity(
-							"melike", "erd", "erd.melike@gmail.com", "5454545454", "1999-12-31"
-					));
-			userRepository.save(melike);
+//			UserEntity admin = new UserEntity(
+//					"admin",
+//					passwordEncoder.encode("password"),
+//					UserRole.ADMIN,
+//					new UserInformationEntity(
+//							"admin", "admin", "admin@gmail.com", "5454545454", "1999-12-31"
+//					));
+//			userRepository.save(admin);
+//
+//			UserEntity haluk = new UserEntity(
+//					"halukerd",
+//					passwordEncoder.encode("123qwe"),
+//					UserRole.REGULAR_USER,
+//					new UserInformationEntity(
+//							"haluk", "erd", "erd.haluk@gmail.com", "5454545454", "1999-12-31"
+//					));
+//			userRepository.save(haluk);
+//
+//			UserEntity melike = new UserEntity(
+//					"melike",
+//					passwordEncoder.encode("a"),
+//					UserRole.REGULAR_USER,
+//					new UserInformationEntity(
+//							"melike", "erd", "erd.melike@gmail.com", "5454545454", "1999-12-31"
+//					));
+//			userRepository.save(melike);
 		};
 	}
 }

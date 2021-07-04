@@ -1,6 +1,5 @@
 package com.avansas.UserManagementProject.security;
 
-
 import com.avansas.UserManagementProject.security.jwt.JwtConfig;
 import com.avansas.UserManagementProject.security.jwt.JwtTokenVerifier;
 import com.avansas.UserManagementProject.security.jwt.JwtUsernamePasswordAuthenticationFilter;
@@ -44,13 +43,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .sessionManagement()
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                     .addFilter(new JwtUsernamePasswordAuthenticationFilter(authenticationManager(), jwtConfig, secretKey))
                     .addFilterAfter(new JwtTokenVerifier(jwtConfig, secretKey), JwtUsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*", "/signup*").permitAll()
-                .antMatchers(HttpMethod.POST, "/api/v1/user/signup").permitAll()
+                .antMatchers("/", "index", "/css/*", "/js/*", "/signup*", "/login", "/users").permitAll()
+                .antMatchers(HttpMethod.POST, "/signup").permitAll()
                 .anyRequest()
                 .authenticated();
     }
@@ -67,5 +67,4 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         provider.setUserDetailsService(userDetailsServiceImpl);
         return provider;
     }
-
 }

@@ -9,6 +9,7 @@ import javax.validation.constraints.*;
 @Setter
 @RequiredArgsConstructor
 @AllArgsConstructor
+@ToString
 
 public class UserInformation {
 
