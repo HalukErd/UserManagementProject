@@ -1,9 +1,6 @@
 package com.avansas.UserManagementProject;
 
 import com.avansas.UserManagementProject.dao.repo.UserRepository;
-import com.avansas.UserManagementProject.model.entity.UserEntity;
-import com.avansas.UserManagementProject.model.entity.UserInformationEntity;
-import com.avansas.UserManagementProject.model.enums.UserRole;
 import com.avansas.UserManagementProject.security.jwt.JwtConfig;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;

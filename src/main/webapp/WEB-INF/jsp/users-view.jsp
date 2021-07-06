@@ -51,11 +51,11 @@
             <td>${user.id}</td>
             <td>${user.username}</td>
             <td>${user.userRole}</td>
-            <td>${user.userInformation.name}</td>
-            <td>${user.userInformation.lastName}</td>
-            <td>${user.userInformation.email}</td>
-            <td>${user.userInformation.phoneNumber}</td>
-            <td>${user.userInformation.birthDay}</td>
+            <td>${user.name}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>${user.phoneNumber}</td>
+            <td>${user.birthDay}</td>
             <c:if test="${hasDeleteUpdateAuthority}">
                 <td><input type="button" id="${user.id}" value='Delete' class="btn-delete"/></td>
                 <td><input type="button" id="${user.id}" value='Update' class="btn-update"/></td>

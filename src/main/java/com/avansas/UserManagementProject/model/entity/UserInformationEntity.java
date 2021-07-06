@@ -8,7 +8,9 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
 
 @Entity(name = "UserInformation")
 @Table(
@@ -17,6 +19,10 @@ import static javax.persistence.GenerationType.SEQUENCE;
                 @UniqueConstraint(
                         name = "unique_email",
                         columnNames = "email"
+                ),
+                @UniqueConstraint(
+                        name = "unique_phoneNumber",
+                        columnNames = "phoneNumber"
                 )
         }
 )
@@ -44,11 +50,25 @@ public class UserInformationEntity {
 
     private String birthDay;
 
-    public UserInformationEntity(String name, String lastName, String email, String phoneNumber, String birthDay) {
+    @OneToOne(
+            cascade = CascadeType.ALL
+    )
+    @JoinColumn(
+            name = "address",
+            referencedColumnName = "id",
+            foreignKey = @ForeignKey(
+                    name = "address_id_fk"
+            )
+    )
+    private AddressEntity addressEntity;
+
+    public UserInformationEntity(String name, String lastName, String email, String phoneNumber, String birthDay, AddressEntity addressEntity) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.phoneNumber = phoneNumber;
         this.birthDay = birthDay;
+        this.addressEntity = addressEntity;
     }
+
 }

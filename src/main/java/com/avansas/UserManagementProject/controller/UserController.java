@@ -3,6 +3,7 @@ package com.avansas.UserManagementProject.controller;
 import com.avansas.UserManagementProject.controller.model.UserRequest;
 import com.avansas.UserManagementProject.controller.model.UserResponse;
 import com.avansas.UserManagementProject.mapper.MapperForUser;
+import com.avansas.UserManagementProject.model.User;
 import com.avansas.UserManagementProject.model.entity.UserEntity;
 import com.avansas.UserManagementProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,17 +30,17 @@ public class UserController {
         this.mapperForUser = mapperForUser;
     }
 
-    @PostMapping("/signup")
-    public UserResponse save(@RequestBody @Valid UserRequest userRequest) {
-        UserEntity userEntity = mapperForUser.convertToUserEntity(userRequest);
-        return mapperForUser.convertToUserResponse(userService.saveUser(userEntity));
-    }
+//    @PostMapping("/signup")
+//    public UserResponse save(@RequestBody @Valid UserRequest userRequest) {
+//        User user = mapperForUser.convertToUser(userRequest);
+//        return mapperForUser.convertToUserResponse(userService.saveUser(user));
+//    }
 
-    @GetMapping("{id}")
-    @PreAuthorize("hasAuthority('user:read')")
-    public UserResponse get(@PathVariable("id") Long id) {
-        return mapperForUser.convertToUserResponse(userService.getUserById(id));
-    }
+//    @GetMapping("{id}")
+//    @PreAuthorize("hasAuthority('user:read')")
+//    public UserResponse get(@PathVariable("id") Long id) {
+//        return mapperForUser.convertToUserResponse(userService.getUserById(id));
+//    }
 
     @GetMapping("/all")
     @PreAuthorize("hasAuthority('user:read')")
@@ -49,12 +50,12 @@ public class UserController {
                 .collect(Collectors.toList());
     }
 
-    @PutMapping
-    @PreAuthorize("hasAuthority('user:write')")
-    public UserResponse put(@RequestBody @Valid UserRequest userRequest) {
-        UserEntity userEntity = mapperForUser.convertToUserEntity(userRequest);
-        return mapperForUser.convertToUserResponse(userService.updateUser(userEntity));
-    }
+//    @PutMapping
+//    @PreAuthorize("hasAuthority('user:write')")
+//    public UserResponse put(@RequestBody @Valid UserRequest userRequest) {
+//        UserEntity userEntity = mapperForUser.convertToUserEntity(userRequest);
+//        return mapperForUser.convertToUserResponse(userService.updateUser(userEntity));
+//    }
 
     @DeleteMapping("{id}")
     @PreAuthorize("hasAuthority('user:delete')")

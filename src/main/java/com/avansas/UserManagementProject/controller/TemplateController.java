@@ -3,10 +3,9 @@ package com.avansas.UserManagementProject.controller;
 import com.avansas.UserManagementProject.controller.model.UserRequest;
 import com.avansas.UserManagementProject.controller.model.UserResponse;
 import com.avansas.UserManagementProject.mapper.MapperForUser;
+import com.avansas.UserManagementProject.model.User;
 import com.avansas.UserManagementProject.security.jwt.UsernamePasswordAuthenticationRequest;
 import com.avansas.UserManagementProject.service.UserService;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +19,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.avansas.UserManagementProject.model.enums.UserPermission.USER_DELETE;
-
 @Controller
 @RequestMapping
 public class TemplateController {
@@ -33,13 +30,6 @@ public class TemplateController {
         this.userService = userService;
         this.mapperForUser = mapperForUser;
     }
-
-    //    @GetMapping("login-view")
-//    public String getLogin(Model model) {
-////        model.addAttribute("login", new Login())
-//        System.out.println("login controller invoked.");
-//        return "login-view";
-//    }
 
     @GetMapping("/login")
     public String addBookView(Model model) {
@@ -66,7 +56,9 @@ public class TemplateController {
     public RedirectView postSignUp(@ModelAttribute("userRequest") UserRequest userRequest, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/login", true);
         System.out.println(userRequest.toString());
-        redirectAttributes.addFlashAttribute("savedUser", userRequest);
+        User user = userService.saveUser(mapperForUser.convertToUser(userRequest));
+        UserResponse userResponse = mapperForUser.convertToUserResponse(user);
+        redirectAttributes.addFlashAttribute("savedUser", userResponse);
         redirectAttributes.addFlashAttribute("addUserSuccess", true);
         return redirectView;
     }

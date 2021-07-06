@@ -2,10 +2,7 @@ package com.avansas.UserManagementProject.service;
 
 import com.avansas.UserManagementProject.dao.UserDao;
 import com.avansas.UserManagementProject.mapper.MapperForUser;
-import com.avansas.UserManagementProject.model.UserDetailsImpl;
 import com.avansas.UserManagementProject.model.entity.UserEntity;
-import com.avansas.UserManagementProject.dao.repo.UserRepository;
-import lombok.ToString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

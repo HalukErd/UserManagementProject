@@ -3,8 +3,11 @@ package com.avansas.UserManagementProject.mapper;
 
 import com.avansas.UserManagementProject.controller.model.UserRequest;
 import com.avansas.UserManagementProject.controller.model.UserResponse;
+import com.avansas.UserManagementProject.model.Address;
+import com.avansas.UserManagementProject.model.User;
 import com.avansas.UserManagementProject.model.UserDetailsImpl;
 import com.avansas.UserManagementProject.model.UserInformation;
+import com.avansas.UserManagementProject.model.entity.AddressEntity;
 import com.avansas.UserManagementProject.model.entity.UserEntity;
 import com.avansas.UserManagementProject.model.entity.UserInformationEntity;
 import com.avansas.UserManagementProject.model.enums.UserRole;
@@ -22,12 +25,19 @@ public class MapperForUser {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public UserResponse convertToUserResponse(UserEntity userEntity) {
+    public UserResponse convertToUserResponse(User user) {
         return new UserResponse(
-                userEntity.getId(),
-                userEntity.getUsername(),
-                userEntity.getUserRole(),
-                convertToUserInformation(userEntity.getUserInformationEntity())
+                user.getId(),
+                user.getUsername(),
+                user.getPassword(),
+                user.getUserRole(),
+                user.getUserInformation().getName(),
+                user.getUserInformation().getLastName(),
+                user.getUserInformation().getEmail(),
+                user.getUserInformation().getPhoneNumber(),
+                user.getUserInformation().getBirthDay(),
+                user.getUserInformation().getAddress().getCity(),
+                user.getUserInformation().getAddress().getTown()
         );
     }
 
@@ -36,7 +46,74 @@ public class MapperForUser {
                 userRequest.getUsername(),
                 passwordEncoder.encode(userRequest.getPassword()),
                 UserRole.REGULAR_USER,
-                convertToUserInformationEntity(userRequest.getUserInformation())
+                new UserInformationEntity(
+                        userRequest.getName(),
+                        userRequest.getLastName(),
+                        userRequest.getEmail(),
+                        userRequest.getPhoneNumber(),
+                        userRequest.getBirthDay(),
+                        new AddressEntity(
+                                userRequest.getCity(),
+                                userRequest.getTown()
+                        )
+                )
+        );
+    }
+    
+    public UserEntity convertToUserEntity(User user) {
+        return new UserEntity(
+                user.getUsername(),
+                passwordEncoder.encode(user.getPassword()),
+                UserRole.REGULAR_USER,
+                new UserInformationEntity(
+                        user.getUserInformation().getName(),
+                        user.getUserInformation().getLastName(),
+                        user.getUserInformation().getEmail(),
+                        user.getUserInformation().getPhoneNumber(),
+                        user.getUserInformation().getBirthDay(),
+                        new AddressEntity(
+                                user.getUserInformation().getAddress().getCity(),
+                                user.getUserInformation().getAddress().getTown()
+                        )
+                )
+        );
+    }
+
+    public User convertToUser(UserEntity userEntity) {
+        return new User(
+                userEntity.getUsername(),
+                passwordEncoder.encode(userEntity.getPassword()),
+                UserRole.REGULAR_USER,
+                new UserInformation(
+                        userEntity.getUserInformationEntity().getName(),
+                        userEntity.getUserInformationEntity().getLastName(),
+                        userEntity.getUserInformationEntity().getEmail(),
+                        userEntity.getUserInformationEntity().getPhoneNumber(),
+                        userEntity.getUserInformationEntity().getBirthDay(),
+                        new Address(
+                                userEntity.getUserInformationEntity().getAddressEntity().getCity(),
+                                userEntity.getUserInformationEntity().getAddressEntity().getTown()
+                        )
+                )
+        );
+    }
+
+    public User convertToUser(UserRequest userRequest) {
+        return new User(
+                userRequest.getUsername(),
+                passwordEncoder.encode(userRequest.getPassword()),
+                userRequest.getUserRole(),
+                new UserInformation(
+                        userRequest.getName(),
+                        userRequest.getLastName(),
+                        userRequest.getEmail(),
+                        userRequest.getPhoneNumber(),
+                        userRequest.getBirthDay(),
+                        new Address(
+                                userRequest.getCity(),
+                                userRequest.getTown()
+                        )
+                )
         );
     }
 
@@ -54,7 +131,11 @@ public class MapperForUser {
                 userInformation.getLastName(),
                 userInformation.getEmail(),
                 userInformation.getPhoneNumber(),
-                userInformation.getBirthDay()
+                userInformation.getBirthDay(),
+                new AddressEntity(
+                        userInformation.getAddress().getCity(),
+                        userInformation.getAddress().getTown()
+                )
         );
     }
 
@@ -64,7 +145,11 @@ public class MapperForUser {
                 userInformationEntity.getLastName(),
                 userInformationEntity.getEmail(),
                 userInformationEntity.getPhoneNumber(),
-                userInformationEntity.getBirthDay()
+                userInformationEntity.getBirthDay(),
+                new Address(
+                        userInformationEntity.getAddressEntity().getCity(),
+                        userInformationEntity.getAddressEntity().getTown()
+                )
         );
     }
 }

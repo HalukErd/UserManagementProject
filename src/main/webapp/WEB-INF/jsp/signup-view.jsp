@@ -32,25 +32,35 @@
 
 <form:form action="${sign_up_url}" method="post" modelAttribute="userRequest">
     <form:label cssClass="sr-only" path="username">Username: </form:label>
-    <form:input cssClass="form-control" id="username" type="text" path="username"/>
+    <form:input cssClass="form-control" id="username" type="text" path="username" placeholder="Username"/>
 
     <form:label cssClass="sr-only" path="password">Username: </form:label>
-    <form:input cssClass="form-control" type="text" path="password"/>
+    <form:input cssClass="form-control" type="password" path="password" placeholder="Password"/>
 
-    <form:label cssClass="sr-only" path="userInformation.name">Username: </form:label>
-    <form:input cssClass="form-control" type="text" path="userInformation.name"/>
+    <form:label cssClass="sr-only" path="name">Username: </form:label>
+    <form:input cssClass="form-control" type="text" path="name" placeholder="First Name"/>
 
-    <form:label cssClass="sr-only" path="userInformation.lastName">Username: </form:label>
-    <form:input cssClass="form-control" type="text" path="userInformation.lastName"/>
+    <form:label cssClass="sr-only" path="lastName">Username: </form:label>
+    <form:input cssClass="form-control" type="text" path="lastName" placeholder="Last Name"/>
 
-    <form:label cssClass="sr-only" path="userInformation.email">Username: </form:label>
-    <form:input cssClass="form-control" type="text" path="userInformation.email"/>
+    <form:label cssClass="sr-only" path="email">Username: </form:label>
+    <form:input cssClass="form-control" type="text" path="email" placeholder="E-Mail"/>
 
-    <form:label cssClass="sr-only" path="userInformation.phoneNumber">Username: </form:label>
-    <form:input cssClass="form-control" type="text" path="userInformation.phoneNumber"/>
+    <form:label cssClass="sr-only" path="phoneNumber">Username: </form:label>
+    <form:input cssClass="form-control" type="text" path="phoneNumber" placeholder="Phone Number"/>
 
-    <form:label cssClass="sr-only" path="userInformation.birthDay">Username: </form:label>
-    <form:input cssClass="form-control" type="date" path="userInformation.birthDay"/>
+    <form:label cssClass="sr-only" path="birthDay">Username: </form:label>
+    <form:input cssClass="form-control" type="date" path="birthDay" placeholder="Birth Day"/>
+
+    <form:label cssClass="sr-only" path="city">Username: </form:label>
+    <form:select id="citySelect" cssClass="form-control" path="city">
+        <form:option  disabled="true" value="Select a city" selected="true"/>
+    </form:select>
+    
+    <form:label cssClass="sr-only" path="town">Username: </form:label>
+    <form:select id="townSelect" cssClass="form-control" path="town">
+        <form:option  disabled="true" value="Select a town" selected="true"/>
+    </form:select>
 
     <input type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">
 

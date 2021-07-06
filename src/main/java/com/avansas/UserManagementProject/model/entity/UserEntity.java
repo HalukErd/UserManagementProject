@@ -9,7 +9,8 @@ import static javax.persistence.GenerationType.SEQUENCE;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 @ToString
 
 @Entity(name = "ApplicationUserEntity")
