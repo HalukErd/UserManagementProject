@@ -1,10 +1,7 @@
 package com.avansas.UserManagementProject.controller;
 
-import com.avansas.UserManagementProject.controller.model.UserRequest;
 import com.avansas.UserManagementProject.controller.model.UserResponse;
 import com.avansas.UserManagementProject.mapper.MapperForUser;
-import com.avansas.UserManagementProject.model.User;
-import com.avansas.UserManagementProject.model.entity.UserEntity;
 import com.avansas.UserManagementProject.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -13,7 +10,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
