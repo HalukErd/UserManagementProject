@@ -19,14 +19,14 @@ $(document).ready(function () {
 
     function getTowns(city) {
         const urlToGetTowns = "http://localhost:8085/api/cityandtowns/gettowns/" + city;
-        $.get(urlToGetTowns, function (resposeTownList){
+        $.get(urlToGetTowns, function (responseTownList){
             townSelect.empty();
             $("<option>")
                 .attr("disabled", true)
                 .attr("selected", true)
                 .text("Select a town")
                 .appendTo(townSelect);
-            $.each(resposeTownList, function (index, town) {
+            $.each(responseTownList, function (index, town) {
                 $("<option>").text(town).appendTo(townSelect);
             });
         });

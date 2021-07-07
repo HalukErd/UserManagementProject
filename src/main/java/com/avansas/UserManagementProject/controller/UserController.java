@@ -32,14 +32,14 @@ public class UserController {
 //        return mapperForUser.convertToUserResponse(userService.saveUser(user));
 //    }
 
-//    @GetMapping("{id}")
+    @GetMapping("{id}")
 //    @PreAuthorize("hasAuthority('user:read')")
-//    public UserResponse get(@PathVariable("id") Long id) {
-//        return mapperForUser.convertToUserResponse(userService.getUserById(id));
-//    }
+    public UserResponse get(@PathVariable("id") Long id) {
+        return mapperForUser.convertToUserResponse(userService.getUserById(id));
+    }
 
     @GetMapping("/all")
-    @PreAuthorize("hasAuthority('user:read')")
+//    @PreAuthorize("hasAuthority('user:read')")
     public List<UserResponse> getAll() {
         return userService.getAllUsers().stream()
                 .map(mapperForUser::convertToUserResponse)
@@ -54,13 +54,13 @@ public class UserController {
 //    }
 
     @DeleteMapping("{id}")
-    @PreAuthorize("hasAuthority('user:delete')")
+//    @PreAuthorize("hasAuthority('user:delete')")
     public boolean delete(@PathVariable("id") Long id) {
         return userService.deleteUserById(id);
     }
 
-    @GetMapping(value = "/check")
-    public Collection<? extends GrantedAuthority> getCheck(@AuthenticationPrincipal UserDetails user) {
-        return user.getAuthorities();
-    }
+//    @GetMapping(value = "/check")
+//    public Collection<? extends GrantedAuthority> getCheck(@AuthenticationPrincipal UserDetails user) {
+//        return user.getAuthorities();
+//    }
 }

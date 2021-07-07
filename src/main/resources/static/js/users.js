@@ -9,11 +9,7 @@ $(document).ready(function () {
         }
     })
 
-    $(document).on('click', '.btn-update', function (e) {
-        e.preventDefault();
-        updateModal.style.display = "block";
-        fillUpdateFields(this.id);
-    })
+
 
     function deleteUser(button, id) {
         let urlToDelete = "api/v1/user/" + id;
@@ -36,7 +32,5 @@ $(document).before(function () {
         type: "HEAD",
         url: "/users",
         headers: {"Authorization": localStorage.getItem("Authorization")}
-
-
     })
 });

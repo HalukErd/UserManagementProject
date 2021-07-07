@@ -38,12 +38,12 @@ public class UserRequest {
     @Size(min = 10, max = 11)
     private String phoneNumber;
 
+    @DateTimeFormat(pattern = "yyyy-mm-dd")
+    private String birthDay;
+
     @NotBlank
     private String city;
 
     @NotBlank
     private String town;
-
-    @DateTimeFormat(pattern = "yyyy-mm-dd")
-    private String birthDay;
 }

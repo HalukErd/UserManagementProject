@@ -8,10 +8,7 @@ import com.avansas.UserManagementProject.security.jwt.UsernamePasswordAuthentica
 import com.avansas.UserManagementProject.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -51,6 +48,11 @@ public class TemplateController {
         model.addAttribute("userRequest", new UserRequest());
         return "signup-view";
     }
+    @GetMapping("update-view")
+    public String getUpdate(Model model) {
+        model.addAttribute("userRequest", new UserRequest());
+        return "update-view";
+    }
 
     @PostMapping("signup")
     public RedirectView postSignUp(@ModelAttribute("userRequest") UserRequest userRequest, RedirectAttributes redirectAttributes) {
@@ -63,6 +65,17 @@ public class TemplateController {
         return redirectView;
     }
 
+    @PutMapping("update")
+    public RedirectView postUpdate(@ModelAttribute("userRequest") UserRequest userRequest, RedirectAttributes redirectAttributes) {
+        final RedirectView redirectView = new RedirectView("/logout", true);
+        System.out.println(userRequest.toString());
+        User user = userService.saveUser(mapperForUser.convertToUser(userRequest));
+        UserResponse userResponse = mapperForUser.convertToUserResponse(user);
+        redirectAttributes.addFlashAttribute("savedUser", userResponse);
+        redirectAttributes.addFlashAttribute("addUserSuccess", true);
+        return redirectView;
+    }
+    
     @GetMapping("users")
     public String getUsers(Model model, HttpServletRequest request) {
         List<UserResponse> users = userService.getAllUsers().stream()
@@ -76,4 +89,10 @@ public class TemplateController {
         model.addAttribute("hasDeleteUpdateAuthority", true);
         return "users-view";
     }
+
+//    @GetMapping("user/{id}")
+//    public void getUser(Model model, @PathVariable Long id) {
+//        User userToUpdate = userService.getUserById(id);
+//        model.addAttribute("userToUpdate", userToUpdate);
+//    }
 }

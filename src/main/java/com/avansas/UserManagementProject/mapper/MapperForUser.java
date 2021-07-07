@@ -16,6 +16,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import static com.avansas.UserManagementProject.model.enums.UserRole.REGULAR_USER;
+
 @Component
 public class MapperForUser {
     private final PasswordEncoder passwordEncoder;
@@ -45,7 +47,7 @@ public class MapperForUser {
         return new UserEntity(
                 userRequest.getUsername(),
                 passwordEncoder.encode(userRequest.getPassword()),
-                UserRole.REGULAR_USER,
+                REGULAR_USER,
                 new UserInformationEntity(
                         userRequest.getName(),
                         userRequest.getLastName(),
@@ -64,7 +66,7 @@ public class MapperForUser {
         return new UserEntity(
                 user.getUsername(),
                 passwordEncoder.encode(user.getPassword()),
-                UserRole.REGULAR_USER,
+                REGULAR_USER,
                 new UserInformationEntity(
                         user.getUserInformation().getName(),
                         user.getUserInformation().getLastName(),
@@ -81,9 +83,10 @@ public class MapperForUser {
 
     public User convertToUser(UserEntity userEntity) {
         return new User(
+                userEntity.getId(),
                 userEntity.getUsername(),
                 passwordEncoder.encode(userEntity.getPassword()),
-                UserRole.REGULAR_USER,
+                REGULAR_USER,
                 new UserInformation(
                         userEntity.getUserInformationEntity().getName(),
                         userEntity.getUserInformationEntity().getLastName(),
@@ -102,7 +105,7 @@ public class MapperForUser {
         return new User(
                 userRequest.getUsername(),
                 passwordEncoder.encode(userRequest.getPassword()),
-                userRequest.getUserRole(),
+                REGULAR_USER,
                 new UserInformation(
                         userRequest.getName(),
                         userRequest.getLastName(),

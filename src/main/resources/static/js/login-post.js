@@ -7,7 +7,7 @@ $(document).ready(function () {
             username: $("#username").val(),
             password: $("#password").val()
         };
-        console.log(formData);
+        console.log(JSON.stringify(formData));
 
         $.ajax({
             url: "http://localhost:8080/login",
