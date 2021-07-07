@@ -26,11 +26,10 @@ public class UserResponse {
 
     private String phoneNumber;
 
+    private String birthDay;
+
     private String city;
 
     private String town;
-
-    private String birthDay;
-
 
 }

@@ -10,7 +10,6 @@ import com.avansas.UserManagementProject.model.UserInformation;
 import com.avansas.UserManagementProject.model.entity.AddressEntity;
 import com.avansas.UserManagementProject.model.entity.UserEntity;
 import com.avansas.UserManagementProject.model.entity.UserInformationEntity;
-import com.avansas.UserManagementProject.model.enums.UserRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;

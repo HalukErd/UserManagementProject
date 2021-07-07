@@ -22,19 +22,21 @@
 <%--<div class="container">--%>
 <%--    <form:form modelAttribute="request">--%>
 <%--        <form:label cssClass="sr-only" path="username">Username: </form:label>--%>
-<%--            <form:input cssClass="form-control" id="username" type="text" path="username"/>--%>
+<%--            <form:input cssClass="form-control" id="username" type="text" placeholder="Username" path="username"/>--%>
 
 <%--        <form:label cssClass="sr-only" path="password">Password: </form:label>--%>
-<%--            <form:input cssClass="form-control" id="password" type="text" path="password"/>--%>
+<%--            <form:input cssClass="form-control" id="password" type="text" placeholder="Password" path="password"/>--%>
 
 <%--        <input id="login-submit" type="submit" class="btn btn-lg btn-primary btn-block" value="Submit">--%>
 <%--    </form:form>--%>
 <%--</div>--%>
+<div class="container">
 <form>
-    <label for="username">username</label><input type="text" id="username"/>
-    <label for="password">password</label><input type="text" id="password"/>
-    <button id="login-submit" value="login"></button>
+    <label class="sr-only" for="username">username</label><input type="text" class="form-control" placeholder="Username" id="username"/>
+    <label class="sr-only" for="password">password</label><input type="text" class="form-control" placeholder="Password" id="password"/>
+    <button class="btn btn-lg btn-primary btn-block" id="login-submit" >Login</button>
 </form>
+</div>
 
 </body>
 </html>

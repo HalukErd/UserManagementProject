@@ -32,5 +32,7 @@ public class AddressEntity {
     private String town;
 
     public AddressEntity(String city, String town) {
+        this.city = city;
+        this.town = town;
     }
 }

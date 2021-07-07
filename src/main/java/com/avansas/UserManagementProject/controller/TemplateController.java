@@ -29,7 +29,7 @@ public class TemplateController {
     }
 
     @GetMapping("/login")
-    public String addBookView(Model model) {
+    public String loginView(Model model) {
         model.addAttribute("request", new UsernamePasswordAuthenticationRequest());
         return "login-view";
     }
@@ -48,9 +48,11 @@ public class TemplateController {
         model.addAttribute("userRequest", new UserRequest());
         return "signup-view";
     }
-    @GetMapping("update-view")
-    public String getUpdate(Model model) {
-        model.addAttribute("userRequest", new UserRequest());
+    @GetMapping("update-view/{id}")
+    public String getUpdate(Model model, @PathVariable Long id) {
+        UserResponse userToUpdate = mapperForUser.convertToUserResponse(userService.getUserById(id));
+
+        model.addAttribute("userRequest", userToUpdate);
         return "update-view";
     }
 

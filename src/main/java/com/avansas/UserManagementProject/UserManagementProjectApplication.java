@@ -29,7 +29,7 @@ public class UserManagementProjectApplication {
 
 //			UserEntity admin = new UserEntity(
 //					"admin",
-//					passwordEncoder.encode("password"),
+//					passwordEncoder.encode("a"),
 //					UserRole.ADMIN,
 //					new UserInformationEntity(
 //							"admin", "admin", "admin@gmail.com", "5454545454", "1999-12-31"
@@ -38,7 +38,7 @@ public class UserManagementProjectApplication {
 //
 //			UserEntity haluk = new UserEntity(
 //					"halukerd",
-//					passwordEncoder.encode("123qwe"),
+//					passwordEncoder.encode("a"),
 //					UserRole.REGULAR_USER,
 //					new UserInformationEntity(
 //							"haluk", "erd", "erd.haluk@gmail.com", "5454545454", "1999-12-31"
