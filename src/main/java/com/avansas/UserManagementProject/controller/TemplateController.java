@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 @RequestMapping
 public class TemplateController {
@@ -67,11 +68,11 @@ public class TemplateController {
         return redirectView;
     }
 
-    @PutMapping("update")
+    @PutMapping("/update")
     public RedirectView postUpdate(@ModelAttribute("userRequest") UserRequest userRequest, RedirectAttributes redirectAttributes) {
         final RedirectView redirectView = new RedirectView("/logout", true);
         System.out.println(userRequest.toString());
-        User user = userService.saveUser(mapperForUser.convertToUser(userRequest));
+        User user = userService.updateUser(mapperForUser.convertToUser(userRequest));
         UserResponse userResponse = mapperForUser.convertToUserResponse(user);
         redirectAttributes.addFlashAttribute("savedUser", userResponse);
         redirectAttributes.addFlashAttribute("addUserSuccess", true);

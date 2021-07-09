@@ -53,11 +53,12 @@ public class UserService {
         return mapperForUser.convertToUser(userEntity);
     }
 
-    public User updateUser(UserEntity userEntity) {
-        Long userId = getUserByUsername(userEntity.getUsername()).getId(); // To control whether exist or it throws
-        userEntity.setId(userId);
-        deleteUserById(userEntity.getId());
-        UserEntity resultEntity = userDao.updateUser(userEntity).orElseThrow(UserEntityNotUpdatedException::new);
+    public User updateUser(User user) {
+        Long userId = getUserByUsername(user.getUsername()).getId(); // To control whether exist or it throws
+        user.setId(userId);
+        deleteUserById(user.getId());
+        UserEntity userEntity = mapperForUser.convertToUserEntity(user);
+        UserEntity resultEntity = userDao.updateUser(userEntity).orElseThrow(UserEntityNotFoundException::new);
         return mapperForUser.convertToUser(resultEntity);
     }
 
